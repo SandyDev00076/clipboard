@@ -9,3 +9,7 @@ export const addItem = text => {
   });
   localStorage.setItem("clipboard", JSON.stringify(clipboard));
 };
+
+export const getItems = () => {
+  return JSON.parse(localStorage.getItem("clipboard")) | [];
+};
