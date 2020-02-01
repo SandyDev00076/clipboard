@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+.clipboard_item {
+  color: $oxford-blue;
+  border: 3px dashed $oxford-blue;
+  padding: 20px 10px;
+  border-radius: 10px;
+  width: 300px;
+  margin-bottom: 32px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clipboard_item:hover {
+  transform: scale(1.1);
+}

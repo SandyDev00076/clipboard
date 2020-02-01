@@ -1,10 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Input from "../../components/Input";
 import css from "./Clipboard.module.scss";
-import { addItem } from "../../services/StorageService";
+import { addItem, getItems } from "../../services/StorageService";
+import ClipboardItem from "../../components/ClipboardItem";
 
 const Clipboard = () => {
   const newItemInput = useRef();
+  const [items, setItems] = useState(getItems());
 
   useEffect(() => {
     newItemInput.current.focus();
@@ -46,7 +48,13 @@ const Clipboard = () => {
           </div>
         </div>
       </section>
-      <section className={css.clipboard}></section>
+      <section className={css.clipboard}>
+        <div>
+          {items.map(item => (
+            <ClipboardItem item={item} key={item.id} />
+          ))}
+        </div>
+      </section>
     </section>
   );
 };

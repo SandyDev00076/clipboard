@@ -15,6 +15,7 @@
 }
 
 .clipboard {
+  @extend .centered;
   @extend .padded;
   background-color: $baby-blue;
   color: $oxford-blue;
