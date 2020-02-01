@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+
+.input {
+  padding: 8px;
+  border-radius: 10px;
+  background-color: white;
+  font-family: inherit;
+  font-size: 1.3rem;
+  border: 2px solid $baby-blue;
+
+  &:focus {
+    outline: none;
+    border: 2px solid $baby-blue;
+  }
+}
