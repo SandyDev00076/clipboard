@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.button {
+  background-color: $sapphire-blue;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: inherit;
+  display: block;
+}
