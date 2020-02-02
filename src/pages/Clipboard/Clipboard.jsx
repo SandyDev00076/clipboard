@@ -49,11 +49,9 @@ const Clipboard = () => {
         </div>
       </section>
       <section className={css.clipboard}>
-        <div>
           {items.map(item => (
             <ClipboardItem item={item} key={item.id} />
           ))}
-        </div>
       </section>
     </section>
   );

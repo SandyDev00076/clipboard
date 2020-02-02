@@ -15,10 +15,13 @@
 }
 
 .clipboard {
-  @extend .centered;
   @extend .padded;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: $baby-blue;
   color: $oxford-blue;
+  overflow-y: auto;
   flex: 1;
 }
 
