@@ -1,12 +1,17 @@
-import React from "react";
+import React, { createRef } from "react";
+
+import CopyToClipboard from "react-copy-to-clipboard";
 
 import css from "./ClipboardItem.module.scss";
 
 const ClipboardItem = ({ item }) => {
+  const itemRef = createRef();
   return (
-    <div className={css.clipboard_item}>
-      <pre className={css.itemtext}>{item.text}</pre>
-    </div>
+    <CopyToClipboard text={item.text} className={css.clipboard_item}>
+      <pre className={css.itemtext} ref={itemRef}>
+        {item.text}
+      </pre>
+    </CopyToClipboard>
   );
 };
 
