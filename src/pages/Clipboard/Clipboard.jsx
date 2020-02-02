@@ -12,7 +12,7 @@ const Clipboard = () => {
     newItemInput.current.focus();
     window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
       if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
-        addItem(newItemInput.current.value);
+        setItems(addItem(newItemInput.current.value));
         clearText();
       }
     });

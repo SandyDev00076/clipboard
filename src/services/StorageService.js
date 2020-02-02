@@ -1,15 +1,14 @@
 import uniqid from "uniqid";
 
 export const addItem = text => {
-  let newItem = {
-    id: uniqid("clipboarditem-"),
-    text
-  };
   let clipboard = JSON.parse(localStorage.getItem("clipboard"));
   if (!clipboard) clipboard = [];
-  clipboard.push(newItem);
+  clipboard.push({
+    id: uniqid("clipboarditem-"),
+    text
+  });
   localStorage.setItem("clipboard", JSON.stringify(clipboard));
-  return newItem;
+  return clipboard;
 };
 
 export const getItems = () => {
