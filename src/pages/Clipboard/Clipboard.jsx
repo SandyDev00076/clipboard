@@ -50,7 +50,7 @@ const Clipboard = () => {
       </section>
       <section className={css.clipboard}>
           {items.map(item => (
-            <ClipboardItem item={item} key={item.id} />
+            <ClipboardItem item={item} key={item.id} onCopy={() => console.log('working')} />
           ))}
       </section>
     </section>
