@@ -1,17 +1,27 @@
 import uniqid from "uniqid";
 
 export const addItem = text => {
-  let clipboard = JSON.parse(localStorage.getItem("clipboard"));
-  if (!clipboard) clipboard = [];
-  clipboard.push({
+  let items = JSON.parse(localStorage.getItem("clipboard"));
+  if (!items) items = [];
+  items.push({
     id: uniqid("clipboarditem-"),
     text
   });
-  localStorage.setItem("clipboard", JSON.stringify(clipboard));
-  return clipboard;
+  localStorage.setItem("clipboard", JSON.stringify(items));
+  return items;
 };
 
 export const getItems = () => {
   let items = JSON.parse(localStorage.getItem("clipboard"));
   return items ? items : [];
+};
+
+export const deleteItem = id => {
+  let items = JSON.parse(localStorage.getItem("clipboard"));
+  items.splice(
+    items.findIndex(item => item.id === id),
+    1
+  );
+  localStorage.setItem("clipboard", JSON.stringify(items));
+  return items;
 };

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Input from "../../components/Input";
 import css from "./Clipboard.module.scss";
-import { addItem, getItems } from "../../services/StorageService";
+import { addItem, getItems, deleteItem } from "../../services/StorageService";
 import ClipboardItem from "../../components/ClipboardItem";
 
 const Clipboard = () => {
@@ -56,6 +56,7 @@ const Clipboard = () => {
             item={item}
             key={item.id}
             onCopy={() => console.log("working")}
+            onDelete={() => setItems(deleteItem(item.id))}
           />
         ))}
       </section>
