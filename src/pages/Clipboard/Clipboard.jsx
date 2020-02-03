@@ -7,6 +7,7 @@ import ClipboardItem from "../../components/ClipboardItem";
 const Clipboard = () => {
   const newItemInput = useRef();
   const [items, setItems] = useState(getItems());
+  const [text, setText] = useState("");
 
   useEffect(() => {
     newItemInput.current.focus();
@@ -19,6 +20,7 @@ const Clipboard = () => {
   }, []);
 
   function clearText() {
+    setText("");
     if (newItemInput.current.value) {
       newItemInput.current.value = "";
     }
@@ -30,7 +32,10 @@ const Clipboard = () => {
         <div>
           <div className={css.newitempanel}>
             <span className={css.addtext}>Add text to your clipboard</span>
-            <Input ref={newItemInput} />
+            <Input
+              ref={newItemInput}
+              onChange={evt => setText(evt.target.value)}
+            />
             <span className={css.dragdroptext}>
               Or just drag and drop the text here
             </span>
@@ -38,10 +43,7 @@ const Clipboard = () => {
           <div
             className={css.addtip}
             style={{
-              visibility:
-                newItemInput.current && newItemInput.current.value
-                  ? "visible"
-                  : "hidden"
+              visibility: text ? "visible" : "hidden"
             }}
           >
             Press Ctrl+Enter to add this text
@@ -49,9 +51,13 @@ const Clipboard = () => {
         </div>
       </section>
       <section className={css.clipboard}>
-          {items.map(item => (
-            <ClipboardItem item={item} key={item.id} onCopy={() => console.log('working')} />
-          ))}
+        {items.map(item => (
+          <ClipboardItem
+            item={item}
+            key={item.id}
+            onCopy={() => console.log("working")}
+          />
+        ))}
       </section>
     </section>
   );
