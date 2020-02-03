@@ -28,8 +28,6 @@
 
 .newitempanel {
   padding: 16px;
-  border: 2px dashed $baby-blue;
-  border-radius: 10px;
   text-align: center;
   font-size: 1.3rem;
   max-width: 280px;
@@ -44,8 +42,9 @@
 
   .dragdroptext {
     margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid $baby-blue;
+    padding: 16px;
+    border: 2px dashed $baby-blue;
+    border-radius: 10px;
   }
 }
 
