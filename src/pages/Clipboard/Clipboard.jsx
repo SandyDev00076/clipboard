@@ -3,11 +3,14 @@ import Input from "../../components/Input";
 import css from "./Clipboard.module.scss";
 import { addItem, getItems, deleteItem } from "../../services/StorageService";
 import ClipboardItem from "../../components/ClipboardItem";
+import Toast from "../../components/Toast";
 
 const Clipboard = () => {
   const newItemInput = useRef();
   const [items, setItems] = useState(getItems());
   const [text, setText] = useState("");
+  const [showCopiedToast, setCopiedToast] = useState(false);
+  const [showDeletedToast, setDeletedToast] = useState(false);
 
   useEffect(() => {
     newItemInput.current.focus();
@@ -52,11 +55,26 @@ const Clipboard = () => {
           <ClipboardItem
             item={item}
             key={item.id}
-            onCopy={() => console.log("working")}
-            onDelete={() => setItems(deleteItem(item.id))}
+            onCopy={() => setCopiedToast(true)}
+            onDelete={() => {
+              setItems(deleteItem(item.id));
+              setDeletedToast(true);
+            }}
           />
         ))}
       </section>
+      <Toast
+        message="Copied"
+        bgColor="green"
+        show={showCopiedToast}
+        onClose={() => setCopiedToast(false)}
+      />
+      <Toast
+        message="Deleted"
+        bgColor="#800000"
+        show={showDeletedToast}
+        onClose={() => setDeletedToast(false)}
+      />
     </section>
   );
 };

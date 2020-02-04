@@ -14,9 +14,7 @@ const ClipboardItem = ({ item, onCopy, onDelete }) => {
         className={css.clipboard_item}
         onCopy={onCopy}
       >
-        <pre className={css.itemtext} ref={itemRef}>
-          {item.text}
-        </pre>
+        <pre ref={itemRef}>{item.text}</pre>
       </CopyToClipboard>
       <div className={css.deleteitem} onClick={onDelete}>
         <FontAwesomeIcon icon="trash" />
