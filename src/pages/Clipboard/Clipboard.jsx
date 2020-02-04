@@ -4,7 +4,6 @@ import css from "./Clipboard.module.scss";
 import { addItem, getItems, deleteItem } from "../../services/StorageService";
 import ClipboardItem from "../../components/ClipboardItem";
 import Toast from "../../components/Toast";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Clipboard = () => {
   const newItemInput = useRef();
