@@ -4,6 +4,7 @@ import css from "./Clipboard.module.scss";
 import { addItem, getItems, deleteItem } from "../../services/StorageService";
 import ClipboardItem from "../../components/ClipboardItem";
 import Toast from "../../components/Toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Clipboard = () => {
   const newItemInput = useRef();
@@ -48,17 +49,26 @@ const Clipboard = () => {
         </div>
       </section>
       <section className={css.clipboard}>
-        {items.map(item => (
-          <ClipboardItem
-            item={item}
-            key={item.id}
-            onCopy={() => setCopiedToast(true)}
-            onDelete={() => {
-              setItems(deleteItem(item.id));
-              setDeletedToast(true);
-            }}
-          />
-        ))}
+        {items.length !== 0 ? (
+          <>
+            {items.map(item => (
+              <ClipboardItem
+                item={item}
+                key={item.id}
+                onCopy={() => setCopiedToast(true)}
+                onDelete={() => {
+                  setItems(deleteItem(item.id));
+                  setDeletedToast(true);
+                }}
+              />
+            ))}
+          </>
+        ) : (
+          <div className={css.noitems}>
+            <div className={css.noitems1}>Nothing Here</div>
+            <div>Add something to get started</div>
+          </div>
+        )}
       </section>
       <Toast
         message="Copied"

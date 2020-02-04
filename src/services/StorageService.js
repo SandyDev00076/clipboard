@@ -3,7 +3,7 @@ import uniqid from "uniqid";
 export const addItem = text => {
   let items = JSON.parse(localStorage.getItem("clipboard"));
   if (!items) items = [];
-  items.push({
+  items.unshift({
     id: uniqid("clipboarditem-"),
     text
   });
