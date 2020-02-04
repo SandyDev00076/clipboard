@@ -64,3 +64,12 @@
   padding: 2px;
   font-weight: bold;
 }
+
+@media screen and (max-width: 940px) {
+  .container {
+    flex-direction: column;
+  }
+  .newitem {
+    flex: 1;
+  }
+}
