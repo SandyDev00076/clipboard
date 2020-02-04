@@ -38,9 +38,6 @@ const Clipboard = () => {
           className={css.inputarea}
           placeholder="Add text to your clipboard"
         />
-        <span className={css.dragdroptext}>
-          Or just drag and drop the text here
-        </span>
         <div
           className={css.addtip}
           style={{
