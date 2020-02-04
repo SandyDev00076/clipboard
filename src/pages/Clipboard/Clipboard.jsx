@@ -29,25 +29,22 @@ const Clipboard = () => {
   return (
     <section className={css.container}>
       <section className={css.newitem}>
-        <div>
-          <div className={css.newitempanel}>
-            <span className={css.addtext}>Add text to your clipboard</span>
-            <Input
-              ref={newItemInput}
-              onChange={evt => setText(evt.target.value)}
-            />
-            <span className={css.dragdroptext}>
-              Or just drag and drop the text here
-            </span>
-          </div>
-          <div
-            className={css.addtip}
-            style={{
-              visibility: text ? "visible" : "hidden"
-            }}
-          >
-            Press Ctrl+Enter to add this text
-          </div>
+        <Input
+          ref={newItemInput}
+          onChange={evt => setText(evt.target.value)}
+          className={css.inputarea}
+          placeholder="Add text to your clipboard"
+        />
+        <span className={css.dragdroptext}>
+          Or just drag and drop the text here
+        </span>
+        <div
+          className={css.addtip}
+          style={{
+            visibility: text ? "visible" : "hidden"
+          }}
+        >
+          Press Ctrl+Enter to add this text
         </div>
       </section>
       <section className={css.clipboard}>

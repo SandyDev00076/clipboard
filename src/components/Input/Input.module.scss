@@ -2,15 +2,19 @@
 
 .input {
   padding: 8px;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 5px;
   font-family: inherit;
   font-size: 1.3rem;
-  border: 2px solid $baby-blue;
-  background-color: $baby-blue;
+  background-color: $oxford-blue;
+  color: $baby-blue;
+  resize: none;
 
   &:focus {
     outline: none;
-    border: 2px solid $baby-blue;
+    border: 1px solid $baby-blue;
+  }
+
+  &::placeholder {
+    color: rgb(177, 177, 177);
   }
 }
