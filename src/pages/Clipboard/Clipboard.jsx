@@ -42,14 +42,16 @@ const Clipboard = () => {
           className={css.inputarea}
           placeholder="Add text to your clipboard"
         />
-        <div
-          className={css.addtip}
-          style={{
-            visibility: text ? "visible" : "hidden"
-          }}
-        >
-          Press Ctrl+Enter to add this text
-        </div>
+        {isBrowser && (
+          <div
+            className={css.addtip}
+            style={{
+              visibility: text ? "visible" : "hidden"
+            }}
+          >
+            Press Ctrl+Enter to add this text
+          </div>
+        )}
         {isMobile && (
           <div
             className={css.mobileAddItem}
