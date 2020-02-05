@@ -3,9 +3,13 @@ import React from "react";
 import ClipBoard from "./pages/Clipboard";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheckCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faTrash,
+  faPlus
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCheckCircle, faTrash);
+library.add(faCheckCircle, faTrash, faPlus);
 
 function App() {
   myLogs();

@@ -73,6 +73,20 @@
   font-size: 2rem;
 }
 
+.mobileAddItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+
+  color: $oxford-blue;
+  background-color: $baby-blue;
+}
+
 @media screen and (max-width: 940px) {
   .container {
     flex-direction: column;

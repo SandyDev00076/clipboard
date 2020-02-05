@@ -4,6 +4,8 @@ import css from "./Clipboard.module.scss";
 import { addItem, getItems, deleteItem } from "../../services/StorageService";
 import ClipboardItem from "../../components/ClipboardItem";
 import Toast from "../../components/Toast";
+import { isBrowser, isMobile } from "react-device-detect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Clipboard = () => {
   const newItemInput = useRef();
@@ -14,12 +16,14 @@ const Clipboard = () => {
 
   useEffect(() => {
     newItemInput.current.focus();
-    window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
-      if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
-        setItems(addItem(newItemInput.current.value));
-        clearText();
-      }
-    });
+    if (isBrowser) {
+      window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
+        if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
+          setItems(addItem(newItemInput.current.value));
+          clearText();
+        }
+      });
+    }
   }, []);
 
   function clearText() {
@@ -46,6 +50,17 @@ const Clipboard = () => {
         >
           Press Ctrl+Enter to add this text
         </div>
+        {isMobile && (
+          <div
+            className={css.mobileAddItem}
+            onClick={() => {
+              setItems(addItem(newItemInput.current.value));
+              clearText();
+            }}
+          >
+            <FontAwesomeIcon icon="plus" />
+          </div>
+        )}
       </section>
       <section className={css.clipboard}>
         {items.length !== 0 ? (
