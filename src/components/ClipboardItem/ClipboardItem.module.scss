@@ -16,13 +16,16 @@
   height: 40px;
   width: 40px;
   border-radius: 20px;
-  border: 1px solid $oxford-blue;
   margin-left: 16px;
   cursor: pointer;
+  box-shadow: 0 0 2px $oxford-blue;
+  font-size: 0.9rem;
+  transition-property: box-shadow background-color;
+  transition-duration: 0.3s;
 
   &:hover {
     background-color: $baby-blue-tint;
-    border-width: 2px;
+    box-shadow: 0 0 5px $oxford-blue;
   }
 }
 
@@ -37,6 +40,8 @@
   background-color: $baby-blue;
   white-space: pre-wrap;
   word-wrap: break-word;
+  transition-property: background-color;
+  transition-duration: 0.3s;
 
   &:hover {
     background-color: $baby-blue-tint;
