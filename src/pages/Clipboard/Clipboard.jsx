@@ -19,8 +19,10 @@ const Clipboard = () => {
     if (isBrowser) {
       window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
         if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
-          setItems(addItem(newItemInput.current.value));
-          clearText();
+          if (newItemInput.current.value) {
+            setItems(addItem(newItemInput.current.value));
+            clearText();
+          }
         }
       });
     }
@@ -56,8 +58,10 @@ const Clipboard = () => {
           <div
             className={css.mobileAddItem}
             onClick={() => {
-              setItems(addItem(newItemInput.current.value));
-              clearText();
+              if (newItemInput.current.value) {
+                setItems(addItem(newItemInput.current.value));
+                clearText();
+              }
             }}
           >
             <FontAwesomeIcon icon="plus" />
