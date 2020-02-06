@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Clipboard",
+  "name": "My Clipboard",
+  "description": "An app which lets user to store multiple items in the clipboard and copy or delete any of them at any time",
   "icons": [
     {
       "src": "favicon.ico",
