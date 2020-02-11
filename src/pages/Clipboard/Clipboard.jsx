@@ -1,16 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import Input from "../../components/Input";
-import css from "./Clipboard.module.scss";
 import { addItem, getItems, deleteItem } from "../../services/StorageService";
 import ClipboardItem from "../../components/ClipboardItem";
 import Toast from "../../components/Toast";
 import { isBrowser, isMobile } from "react-device-detect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import css from "./Clipboard.module.scss";
 
 const Clipboard = () => {
   const newItemInput = useRef();
+  const newItemCaptionInput = useRef();
   const [items, setItems] = useState(getItems());
   const [text, setText] = useState("");
+  const [caption, setCaption] = useState("");
   const [showCopiedToast, setCopiedToast] = useState(false);
   const [showDeletedToast, setDeletedToast] = useState(false);
 
@@ -20,7 +22,12 @@ const Clipboard = () => {
       window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
         if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
           if (newItemInput.current.value) {
-            setItems(addItem(newItemInput.current.value));
+            setItems(
+              addItem(
+                newItemInput.current.value,
+                newItemCaptionInput.current.value
+              )
+            );
             clearText();
           }
         }
@@ -30,6 +37,8 @@ const Clipboard = () => {
 
   function clearText() {
     setText("");
+    setCaption("");
+
     if (newItemInput.current.value) {
       newItemInput.current.value = "";
     }
@@ -44,6 +53,14 @@ const Clipboard = () => {
           className={css.inputarea}
           placeholder="Add text to your clipboard"
         />
+        {text && (
+          <Input
+            ref={newItemCaptionInput}
+            placeholder="Add a caption"
+            onChange={evt => setCaption(evt.target.value)}
+            className={css.captionarea}
+          />
+        )}
         {isBrowser && (
           <div
             className={css.addtip}
@@ -59,7 +76,12 @@ const Clipboard = () => {
             className={css.mobileAddItem}
             onClick={() => {
               if (newItemInput.current.value) {
-                setItems(addItem(newItemInput.current.value));
+                setItems(
+                  addItem(
+                    newItemInput.current.value,
+                    newItemCaptionInput.current.value
+                  )
+                );
                 clearText();
               }
             }}

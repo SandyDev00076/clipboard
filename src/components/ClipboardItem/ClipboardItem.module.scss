@@ -1,14 +1,18 @@
 @import "../../styles/variables";
 @import "../../styles/globals.scss";
 
-.itemcontainer {
-  display: flex;
-  align-items: center;
+.item {
+  margin-top: 16px;
   transition: transform 0.2s;
-
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.itemcontainer {
+  display: flex;
+  align-items: center;
+  margin: 0 16px 16px 16px;
 }
 
 .deleteitem {
@@ -42,10 +46,19 @@
   word-wrap: break-word;
   transition-property: background-color;
   transition-duration: 0.3s;
+  margin: 0;
 
   &:hover {
     background-color: $baby-blue-tint;
   }
+}
+
+.itemcaption {
+  font-size: 0.9rem;
+  margin: 5px 16px;
+  font-weight: bold;
+  user-select: none;
+  max-width: 100%;
 }
 
 @media screen and (max-width: 550px) {
