@@ -16,23 +16,24 @@ const Clipboard = () => {
   const [showCopiedToast, setCopiedToast] = useState(false);
   const [showDeletedToast, setDeletedToast] = useState(false);
 
+  if (isBrowser) {
+    window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
+      if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
+        if (newItemInput.current.value) {
+          setItems(
+            addItem(
+              newItemInput.current.value,
+              newItemCaptionInput.current.value
+            )
+          );
+          clearText();
+        }
+      }
+    });
+  }
+
   useEffect(() => {
     newItemInput.current.focus();
-    if (isBrowser) {
-      window.addEventListener("keyup", ({ which, ctrlKey, metaKey }) => {
-        if ((ctrlKey && which === 13) || (metaKey && which === 13)) {
-          if (newItemInput.current.value) {
-            setItems(
-              addItem(
-                newItemInput.current.value,
-                newItemCaptionInput.current.value
-              )
-            );
-            clearText();
-          }
-        }
-      });
-    }
   }, []);
 
   function clearText() {
