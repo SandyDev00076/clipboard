@@ -74,6 +74,11 @@
   font-size: 2rem;
 }
 
+.actionfield {
+  display: flex;
+  align-items: center;
+}
+
 .mobileAddItem {
   display: flex;
   align-items: center;
@@ -83,9 +88,7 @@
   width: 40px;
   border-radius: 20px;
 
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
+  margin: 0 16px;
 
   color: $oxford-blue;
   background-color: $baby-blue;
@@ -93,10 +96,7 @@
 
 .captionarea {
   border: 1px solid $baby-blue;
-}
-
-.mobilecaptionarea {
-  width: 60%;
+  flex: 1;
 }
 
 @media screen and (max-width: 940px) {

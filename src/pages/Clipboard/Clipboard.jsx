@@ -55,14 +55,32 @@ const Clipboard = () => {
           placeholder="Add text to your clipboard"
         />
         {text && (
-          <Input
-            ref={newItemCaptionInput}
-            placeholder="Add a caption"
-            onChange={evt => setCaption(evt.target.value)}
-            className={`${css.captionarea} ${
-              isMobile ? css.mobilecaptionarea : ""
-            }`}
-          />
+          <div className={css.actionfield}>
+            <Input
+              ref={newItemCaptionInput}
+              placeholder="Add a caption"
+              onChange={evt => setCaption(evt.target.value)}
+              className={css.captionarea}
+            />
+            {isMobile && (
+              <div
+                className={css.mobileAddItem}
+                onClick={() => {
+                  if (newItemInput.current.value) {
+                    setItems(
+                      addItem(
+                        newItemInput.current.value,
+                        newItemCaptionInput.current.value
+                      )
+                    );
+                    clearText();
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon="plus" />
+              </div>
+            )}
+          </div>
         )}
         {isBrowser && (
           <div
@@ -72,24 +90,6 @@ const Clipboard = () => {
             }}
           >
             Press Ctrl+Enter to add this text
-          </div>
-        )}
-        {isMobile && (
-          <div
-            className={css.mobileAddItem}
-            onClick={() => {
-              if (newItemInput.current.value) {
-                setItems(
-                  addItem(
-                    newItemInput.current.value,
-                    newItemCaptionInput.current.value
-                  )
-                );
-                clearText();
-              }
-            }}
-          >
-            <FontAwesomeIcon icon="plus" />
           </div>
         )}
       </section>
