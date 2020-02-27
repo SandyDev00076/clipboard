@@ -59,7 +59,9 @@ const Clipboard = () => {
             ref={newItemCaptionInput}
             placeholder="Add a caption"
             onChange={evt => setCaption(evt.target.value)}
-            className={css.captionarea}
+            className={`${css.captionarea} ${
+              isMobile ? css.mobilecaptionarea : ""
+            }`}
           />
         )}
         {isBrowser && (

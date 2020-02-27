@@ -95,6 +95,10 @@
   border: 1px solid $baby-blue;
 }
 
+.mobilecaptionarea {
+  width: 60%;
+}
+
 @media screen and (max-width: 940px) {
   .container {
     flex-direction: column;
